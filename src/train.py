@@ -4,18 +4,18 @@ from lifetimes import BetaGeoFitter
 from lifetimes import GammaGammaFitter
 
 def bgf_train():
-    df = pd.read_csv('../data/bgf_data.csv')
+    df = pd.read_csv('data/bgf_data.csv').set_index('ID')
     bgf = BetaGeoFitter(penalizer_coef=3.001)
-    bgf.fit(data_f['frequency'], data_f['recency'], data_f['T'])
-    bgf.save_model('../models/ggf_small_size.pkl', save_data=False, save_generate_data_method=False)
+    bgf.fit(df['frequency'], df['recency'], df['T'])
+    bgf.save_model('models/bgf_small_size.pkl', save_data=False, save_generate_data_method=False)
     print(bgf)
     return bgf
 
 def ggf_train():
-    df = pd.read_csv('../data/ggf_data.csv')
+    df = pd.read_csv('data/bgf_data.csv').set_index('ID')
     ggf = GammaGammaFitter(penalizer_coef = 10.)
     ggf.fit(df['frequency'],df['monetary_value'])
-    ggf.save_model('../models/ggf_small_size.pkl', save_data=False, save_generate_data_method=False)
+    ggf.save_model('models/ggf_small_size.pkl', save_data=False, save_generate_data_method=False)
     print(ggf)
     return ggf
 
