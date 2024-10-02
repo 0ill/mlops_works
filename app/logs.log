@@ -1,0 +1,420 @@
+2024-10-01 07:25:29,912:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1191077951.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['Recency'], kde=False)
+
+2024-10-01 07:25:30,122:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1191077951.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['Frequency'], kde=False)
+
+2024-10-01 07:25:30,289:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1191077951.py:13: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['Monetary'], kde=False)
+
+2024-10-01 07:25:30,470:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1191077951.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['Tenure'], kde=False)
+
+2024-10-01 07:50:43,639:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/lifetimes/utils.py:397: RuntimeWarning: divide by zero encountered in double_scalars
+  return 1.0 / age.max()
+
+2024-10-01 07:50:43,641:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/lifetimes/fitters/beta_geo_fitter.py:134: RuntimeWarning: invalid value encountered in multiply
+  scaled_recency = recency * self._scale
+
+2024-10-01 07:50:43,641:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/lifetimes/fitters/beta_geo_fitter.py:135: RuntimeWarning: invalid value encountered in multiply
+  scaled_T = T * self._scale
+
+2024-10-01 08:01:06,489:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['recency'], kde=False)
+
+2024-10-01 08:01:06,623:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['frequency'], kde=False)
+
+2024-10-01 08:01:06,720:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['T'], kde=False)
+
+2024-10-01 08:06:00,268:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['recency'], kde=False)
+
+2024-10-01 08:06:00,408:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['frequency'], kde=False)
+
+2024-10-01 08:06:00,494:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['T'], kde=False)
+
+2024-10-01 08:12:41,732:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['recency'], kde=False)
+
+2024-10-01 08:12:41,841:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['frequency'], kde=False)
+
+2024-10-01 08:12:41,931:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['T'], kde=False)
+
+2024-10-01 08:12:42,362:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/seaborn/matrix.py:202: RuntimeWarning: All-NaN slice encountered
+  vmin = np.nanmin(calc_data)
+
+2024-10-01 08:12:42,362:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/seaborn/matrix.py:207: RuntimeWarning: All-NaN slice encountered
+  vmax = np.nanmax(calc_data)
+
+2024-10-01 08:19:00,870:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['recency'], kde=False)
+
+2024-10-01 08:19:00,987:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['frequency'], kde=False)
+
+2024-10-01 08:19:01,075:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['T'], kde=False)
+
+2024-10-01 08:21:03,665:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['recency'], kde=False)
+
+2024-10-01 08:21:03,782:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['frequency'], kde=False)
+
+2024-10-01 08:21:03,881:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['T'], kde=False)
+
+2024-10-01 08:23:35,306:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/pandas/core/arraylike.py:402: RuntimeWarning: invalid value encountered in sqrt
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+
+2024-10-01 08:32:47,591:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['recency'], kde=False)
+
+2024-10-01 08:32:47,701:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['frequency'], kde=False)
+
+2024-10-01 08:32:47,780:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['T'], kde=False)
+
+2024-10-01 08:32:54,991:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/pandas/core/arraylike.py:402: RuntimeWarning: invalid value encountered in sqrt
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+
+2024-10-01 08:32:56,079:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/lifetimes/fitters/beta_geo_fitter.py:255: RuntimeWarning: invalid value encountered in double_scalars
+  numerator = first_term * second_term
+
+2024-10-01 08:32:56,079:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/lifetimes/fitters/beta_geo_fitter.py:256: RuntimeWarning: divide by zero encountered in double_scalars
+  denominator = 1 + (x > 0) * (a / (b + x - 1)) * ((alpha + T) / (alpha + recency)) ** (r + x)
+
+2024-10-01 08:34:25,226:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['recency'], kde=False)
+
+2024-10-01 08:34:25,343:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['frequency'], kde=False)
+
+2024-10-01 08:34:25,612:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['T'], kde=False)
+
+2024-10-01 08:34:30,536:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/pandas/core/arraylike.py:402: RuntimeWarning: invalid value encountered in sqrt
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+
+2024-10-01 08:34:45,253:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/lifetimes/fitters/beta_geo_fitter.py:255: RuntimeWarning: invalid value encountered in double_scalars
+  numerator = first_term * second_term
+
+2024-10-01 08:34:45,253:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/lifetimes/fitters/beta_geo_fitter.py:256: RuntimeWarning: divide by zero encountered in double_scalars
+  denominator = 1 + (x > 0) * (a / (b + x - 1)) * ((alpha + T) / (alpha + recency)) ** (r + x)
+
+2024-10-01 08:35:28,022:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['recency'], kde=False)
+
+2024-10-01 08:35:28,122:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['frequency'], kde=False)
+
+2024-10-01 08:35:28,236:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['T'], kde=False)
+
+2024-10-01 08:35:38,167:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/pandas/core/arraylike.py:402: RuntimeWarning: invalid value encountered in sqrt
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+
+2024-10-01 08:36:52,656:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:5: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['recency'], kde=False)
+
+2024-10-01 08:36:52,776:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:9: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['frequency'], kde=False)
+
+2024-10-01 08:36:52,869:WARNING:/var/folders/z5/7m6yn55n52l04f6_dvr8b6840000gn/T/ipykernel_36043/1274872337.py:17: UserWarning: 
+
+`distplot` is a deprecated function and will be removed in seaborn v0.14.0.
+
+Please adapt your code to use either `displot` (a figure-level function with
+similar flexibility) or `histplot` (an axes-level function for histograms).
+
+For a guide to updating your code to use the new functions, please see
+https://gist.github.com/mwaskom/de44147ed2974457ad6372750bbe5751
+
+  sns.distplot(data['T'], kde=False)
+
+2024-10-01 08:37:47,203:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/lifetimes/fitters/beta_geo_fitter.py:255: RuntimeWarning: invalid value encountered in double_scalars
+  numerator = first_term * second_term
+
+2024-10-01 08:37:47,203:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/lifetimes/fitters/beta_geo_fitter.py:256: RuntimeWarning: divide by zero encountered in double_scalars
+  denominator = 1 + (x > 0) * (a / (b + x - 1)) * ((alpha + T) / (alpha + recency)) ** (r + x)
+
+2024-10-01 08:38:24,124:WARNING:/Users/0ill/anaconda3/envs/oill/lib/python3.9/site-packages/pandas/core/arraylike.py:402: RuntimeWarning: invalid value encountered in log
+  result = getattr(ufunc, method)(*inputs, **kwargs)
+
