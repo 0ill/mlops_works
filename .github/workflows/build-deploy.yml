@@ -1,7 +1,7 @@
 name: test-and-deploy
 
 on:
-  workflow_call: #
+  workflow_call: 
 
 permissions:
   id-token: write
@@ -15,7 +15,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.8"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
