@@ -1,21 +1,32 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+import uvicorn
 from lifetimes import BetaGeoFitter 
+
+
+class InputData(BaseModel):
+    frequency: float
+    recency: float
+    T: float
+    t: int
 
 app = FastAPI()
 
-class InputData(BaseModel):
-    frequency: int
-    recency: int
-    T: int
+@app.get('/')
+def hello():
+    return {"message": "hello world !"}
 
 @app.post("/predict")
 def predict(data: InputData):
-    try:
-        bgf = BetaGeoFitter()
-        bgf.load_model('../models/bgf_small_size.pkl')
-        t = 1
-        prediction = bgf.conditional_expected_number_of_purchases_up_to_time(t, frequency, recency, T)
-        return {"prediction": prediction}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    data = data.dict()
+    frequency = data['frequency']
+    t = data['t']
+    recency = data['recency']
+    T = data['T']
+    bgf = BetaGeoFitter()
+    bgf.load_model('../models/bgf_small_size.pkl')
+    prediction = bgf.predict(t, frequency, recency, T)
+    return {'prediction':prediction}
+
+if __name__ == '__main__':
+    uvicorn(app,host ='127.0.0.1', port =8000)

@@ -13,7 +13,7 @@ provider "heroku" {
 }
 
 resource "heroku_app" "mlops_app" {
-  name   = "mlops-iris-classifier"
+  name   = "mlops"
   region = "us"
 
   config_vars = {
