@@ -20,6 +20,7 @@ jobs:
         run: python -m pytest ./tests
 
   build-and-push:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -39,6 +40,3 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/my-image:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
-      - name: Logout from Docker Hub
-        uses: docker/logout-action@v2
