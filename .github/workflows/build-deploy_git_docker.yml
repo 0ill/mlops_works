@@ -37,4 +37,4 @@ jobs:
         with: 
           context: .
           push: true
-          tags: test/${{ secrets.DOCKER_USERNAME }}/azure:latest
+          tags: azure:latest
