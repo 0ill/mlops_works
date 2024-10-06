@@ -51,7 +51,7 @@ jobs:
           echo "##vso[task.setvariable variable=AZURE_CLIENT_SECRET;issecret=true]${AZURE_CLIENT_SECRET}"
       - name: 'Az login'
         run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
-      - name: 'Deploy container app'
+      - name: 'Deploy container app' 
         uses: azure/CLI@v1
         with:
           az containerapp create --name test-app --resource-group test-apps --location centralus --environment test-apps --image ${{ secrets.DOCKERHUB_USERNAME }}/azure:latest --target-port 80 --ingress external --query properties.configuration.ingress.fqdn
