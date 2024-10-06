@@ -40,7 +40,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/azure:latest
 
   deploy-azure:
-    needs: build-and-push
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Create service principal
@@ -49,13 +49,9 @@ jobs:
           echo "##vso[task.setvariable variable=AZURE_CLIENT_ID;issecret=true]${AZURE_CLIENT_ID}"
           echo "##vso[task.setvariable variable=AZURE_TENANT_ID;issecret=true]${AZURE_TENANT_ID}"
           echo "##vso[task.setvariable variable=AZURE_CLIENT_SECRET;issecret=true]${AZURE_CLIENT_SECRET}"
-      - name: 'Az CLI login'
-        uses: azure/CLI@v1
-        with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: 'Az login'
+        run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
       - name: 'Deploy container app'
         uses: azure/CLI@v1
         with:
-          az containerapp create --name test-app --resource-group test-apps --location centralus --environment test-apps --image docker/${{ secrets.DOCKERHUB_USERNAME }}:latest --target-port 80 --ingress external --query properties.configuration.ingress.fqdn
+          az containerapp create --name test-app --resource-group test-apps --location centralus --environment test-apps --image ${{ secrets.DOCKERHUB_USERNAME }}/azure:latest --target-port 80 --ingress external --query properties.configuration.ingress.fqdn
