@@ -37,4 +37,4 @@ jobs:
         with: 
           context: .
           push: true
-          tags: oill/azure:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/azure:latest
