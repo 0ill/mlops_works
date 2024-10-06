@@ -18,7 +18,7 @@ jobs:
           pip install -r requirements.txt
       - name: Test with pytest
         run: python -m pytest ./tests
-# Sending to docker hub
+
   docker:
     needs: test
     runs-on: ubuntu-latest
@@ -39,4 +39,4 @@ jobs:
         with:
           push: true
           context: .
-          tags: azure:latest
+          tags: azure:test
