@@ -40,7 +40,7 @@ jobs:
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/azure:latest
 
   deploy-azure:
-    needs: ubuntu-latest
+    needs: build-and-push
     runs-on: ubuntu-latest
     steps:
       - name: Create service principal
