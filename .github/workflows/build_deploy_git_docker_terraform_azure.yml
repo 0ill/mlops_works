@@ -56,10 +56,33 @@ jobs:
           ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+         
+      - name: Check for existing Resource Group
+        id: check_resource_group
+        run: |
+          if az group show --name test-apps-dev; then
+            echo "Resource Group exists."
+            echo "::set-output name=exists::true"
+          else
+            echo "Resource Group does not exist."
+            echo "::set-output name=exists::false"
+          fi
+  
+      - name: Delete existing Resource Group
+        if: steps.check_resource_group.outputs.exists == 'true'
+        run: |
+          echo "Deleting existing Resource Group..."
+          az group delete --name test-apps-dev --yes --no-wait
+  
+      - name: Wait for Resource Group to be deleted
+        if: steps.check_resource_group.outputs.exists == 'true'
+        run: |
+          echo "Waiting for Resource Group to be deleted..."
+          while az group show --name test-apps-dev; do
+            echo "Still deleting..."
+            sleep 10
+          done
           
-      - name: import old state
-        run: terraform import azurerm_resource_group.test-apps-dev /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/test-apps-dev
-
       - name: Terraform Apply
         run: terraform apply -auto-approve 
         env:
