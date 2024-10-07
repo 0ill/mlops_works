@@ -58,8 +58,8 @@ resource "azurerm_container_app_environment" "test-apps-dev" {
 # Create a Container Registry
 resource "azurerm_container_registry" "test-apps-dev" {
   name                = "testdevappsacr"
-  resource_group_name = azurerm_resource_group.test-apps-dev2.name
-  location            = azurerm_resource_group.test-apps-dev2.location
+  resource_group_name = azurerm_resource_group.test-apps-dev.name
+  location            = azurerm_resource_group.test-apps-dev.location
   sku                 = "Basic"
   admin_enabled       = true
   
@@ -69,14 +69,14 @@ resource "azurerm_container_registry" "test-apps-dev" {
 resource "azurerm_container_app" "test-apps-dev" {
   name                         = "test-apps-dev"
   container_app_environment_id = azurerm_container_app_environment.test-apps-dev.id
-  resource_group_name          = azurerm_resource_group.test-apps-dev2.name
+  resource_group_name          = azurerm_resource_group.test-apps-dev.name
   revision_mode                = "Single"
   
 
   template {
     container {
       name   = "test-apps-dev"
-      image  = "${azurerm_container_registry.acr.login_server}/test-app:latest"
+      image  = "${azurerm_container_registry.test-apps-dev.login_server}/test-app:latest"
       cpu    = 0.25
       memory = "0.5Gi"
     }
@@ -93,23 +93,23 @@ resource "azurerm_container_app" "test-apps-dev" {
   }
 
   registry {
-    server               = azurerm_container_registry.acr.login_server
-    username             = azurerm_container_registry.acr.admin_username
+    server               = azurerm_container_registry.test-apps-dev.login_server
+    username             = azurerm_container_registry.test-apps-dev.admin_username
     password_secret_name = "registry-password"
   }
 
   secret {
     name  = "registry-password"
-    value = azurerm_container_registry.acr.admin_password
+    value = azurerm_container_registry.test-apps-dev.admin_password
   }
 }
 
 # Output the FQDN of the Container App
 output "app_fqdn" {
-  value = azurerm_container_app.app.latest_revision_fqdn
+  value = azurerm_container_app.test-apps-dev.latest_revision_fqdn
 }
 
 # Output the ACR login server
 output "acr_login_server" {
-  value = azurerm_container_registry.acr.login_server
+  value = azurerm_container_registry.test-apps-dev.login_server
 }
