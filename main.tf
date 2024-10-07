@@ -41,14 +41,14 @@ variable "dockerhub_username" {}
 variable "dockerhub_token" {}
 
 # Create a resource group
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "test-apps-dev2" {
   name     = "test-apps-dev"
   location = "australiaeast"
   
 }
 
 # Create a Container Apps Environment
-resource "azurerm_container_app_environment" "env" {
+resource "azurerm_container_app_environment" "test-apps-dev" {
   name                       = "test-apps-dev"
   location                   = azurerm_resource_group.rg.location
   resource_group_name        = azurerm_resource_group.rg.name
@@ -56,7 +56,7 @@ resource "azurerm_container_app_environment" "env" {
 }
 
 # Create a Container Registry
-resource "azurerm_container_registry" "acr" {
+resource "azurerm_container_registry" "test-apps-dev" {
   name                = "testdevappsacr"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
@@ -66,7 +66,7 @@ resource "azurerm_container_registry" "acr" {
 }
 
 # Create a Container App
-resource "azurerm_container_app" "app" {
+resource "azurerm_container_app" "test-apps-dev" {
   name                         = "test-apps-dev"
   container_app_environment_id = azurerm_container_app_environment.env.id
   resource_group_name          = azurerm_resource_group.rg.name
