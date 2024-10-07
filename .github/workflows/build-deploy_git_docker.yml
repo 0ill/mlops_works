@@ -39,11 +39,8 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/azure:latest
 
-      - name: Logout from Docker Hub
-        uses: docker/logout-action@v2
-
   deploy-azure:
-    needs: test
+    needs: build-and-push
     runs-on: ubuntu-latest
     steps:
       - name: 'Az CLI login'
