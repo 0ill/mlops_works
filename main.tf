@@ -8,6 +8,13 @@ terraform {
   }
 }
 
+# Terraform configuration (typically in a separate file, e.g., terraform.tf)
+terraform {
+  backend "local" {
+    path = "terraform.tfstate"
+  }
+}
+
 provider "azurerm" {
   features {}
   subscription_id = var.azure_subscription_id
