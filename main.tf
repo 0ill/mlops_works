@@ -31,7 +31,7 @@ variable "dockerhub_token" {}
 # Create a resource group
 resource "azurerm_resource_group" "test-apps-dev" {
   name     = "test-apps-dev"
-  location = "australiaeast"
+  location = "centralus"
 }
 
 # Important Note: 
