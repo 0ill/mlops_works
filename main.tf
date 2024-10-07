@@ -16,6 +16,7 @@ provider "azurerm" {
   tenant_id       = var.azure_tenant_id
 }
 
+
 # Define variables for GitHub secrets
 variable "azure_subscription_id" {}
 variable "azure_client_id" {}
@@ -28,6 +29,10 @@ variable "dockerhub_token" {}
 resource "azurerm_resource_group" "rg" {
   name     = "test-apps-dev"
   location = "australiaeast"
+  # This lifecycle rule will destroy and recreate the resource if certain attributes change
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 # Create a Container Apps Environment
@@ -35,6 +40,10 @@ resource "azurerm_container_app_environment" "env" {
   name                       = "test-apps-dev"
   location                   = azurerm_resource_group.rg.location
   resource_group_name        = azurerm_resource_group.rg.name
+  # This lifecycle rule will destroy and recreate the resource if certain attributes change
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 # Create a Container Registry
@@ -44,6 +53,10 @@ resource "azurerm_container_registry" "acr" {
   location            = azurerm_resource_group.rg.location
   sku                 = "Basic"
   admin_enabled       = true
+  # This lifecycle rule will destroy and recreate the resource if certain attributes change
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 # Create a Container App
@@ -52,6 +65,10 @@ resource "azurerm_container_app" "app" {
   container_app_environment_id = azurerm_container_app_environment.env.id
   resource_group_name          = azurerm_resource_group.rg.name
   revision_mode                = "Single"
+  # This lifecycle rule will destroy and recreate the resource if certain attributes change
+  lifecycle {
+    create_before_destroy = true
+  }
 
   template {
     container {
@@ -60,6 +77,7 @@ resource "azurerm_container_app" "app" {
       cpu    = 0.25
       memory = "0.5Gi"
     }
+  
   }
 
   ingress {
