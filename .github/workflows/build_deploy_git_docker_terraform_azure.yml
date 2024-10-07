@@ -65,27 +65,27 @@ jobs:
         run: |
           if az group show --name test-apps-dev; then
             echo "Resource Group exists."
-            echo "::set-output name=exists::true"
+            echo "::set-output name=rg_exists::true"
           else
             echo "Resource Group does not exist."
-            echo "::set-output name=exists::false"
+            echo "::set-output name=rg_exists::false"
           fi
-  
+
       - name: Delete existing Resource Group
-        if: steps.check_resource_group.outputs.exists == 'true'
+        if: steps.check_resource_group.outputs.rg_exists == 'true'
         run: |
           echo "Deleting existing Resource Group..."
           az group delete --name test-apps-dev --yes --no-wait
-  
+
       - name: Wait for Resource Group to be deleted
-        if: steps.check_resource_group.outputs.exists == 'true'
+        if: steps.check_resource_group.outputs.rg_exists == 'true'
         run: |
           echo "Waiting for Resource Group to be deleted..."
           while az group show --name test-apps-dev; do
             echo "Still deleting..."
             sleep 10
           done
-          
+
       - name: Check for existing Container App Environment
         id: check_container_app_env
         run: |
@@ -101,7 +101,7 @@ jobs:
         if: steps.check_container_app_env.outputs.env_exists == 'true'
         run: |
           echo "Deleting existing Container App Environment..."
-          az containerapp env delete --name test-apps-dev --resource-group test-apps-dev
+          az containerapp env delete --name test-apps-dev --resource-group test-apps-dev --yes
 
       - name: Wait for Container App Environment to be deleted
         if: steps.check_container_app_env.outputs.env_exists == 'true'
