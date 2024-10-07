@@ -39,19 +39,28 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/azure:latest
 
+      - name: Logout from Docker Hub
+        uses: docker/logout-action@v2
+
   deploy-azure:
     needs: test
     runs-on: ubuntu-latest
     steps:
-      - name: Create service principal
-        run: |
-          az ad sp create-for-rbac --name my-service-principal --role contributor --scopes /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }} --output json
-          echo "##vso[task.setvariable variable=AZURE_CLIENT_ID;issecret=true]${AZURE_CLIENT_ID}"
-          echo "##vso[task.setvariable variable=AZURE_TENANT_ID;issecret=true]${AZURE_TENANT_ID}"
-          echo "##vso[task.setvariable variable=AZURE_CLIENT_SECRET;issecret=true]${AZURE_CLIENT_SECRET}"
-      - name: 'Az login'
-        run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
-      - name: 'Deploy container app' 
-        uses: azure/CLI@v1
+      - name: 'Az CLI login'
+        uses: azure/login@v1
         with:
-          az containerapp create --name test-app --resource-group test-apps --location centralus --environment test-apps --image ${{ secrets.DOCKERHUB_USERNAME }}/azure:latest --target-port 80 --ingress external --query properties.configuration.ingress.fqdn
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  
+      - name: 'Run Azure CLI commands'
+        run: |
+          az containerapp up \
+            --name test-app \
+            --resource-group test-apps \
+            --location centralus \
+            --environment 'test-apps' \
+            --image oill/azure:latest \
+            --target-port 80 \
+            --ingress external \
+            --query properties.configuration.ingress.fqdn
