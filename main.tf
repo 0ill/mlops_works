@@ -31,34 +31,6 @@ provider "azurerm" {
 }
 
 
-# Import existing resources or create new ones if they don't exist
-resource "azurerm_resource_group" "r" {
-  name     = "test-apps-dev"
-  location = "centralus"
-  import {
-    id = "/subscriptions/<subscription_id>/resourceGroups/test-apps-dev"
-  }
-  provisioner "local-exec" {
-    command = "terraform import azurerm_resource_group.r || terraform apply -target=azurerm_resource_group.r"
-  }
-}
-
-resource "azure_container_app" "test_app" {
-  name                = "test-app"
-  resource_group_name = azurerm_resource_group.r.name
-  location            = "centralus"
-  environment         = "test-apps"
-  image               = "${var.dockerhub_username}/azure:latest"
-  target_port         = 80
-  ingress {
-    external = true
-  }
-  import {
-    id = "/subscriptions/<subscription_id>/resourceGroups/test-apps-dev/providers/Microsoft.ContainerApp/containerApps/test-app"
-  }
-  provisioner "local-exec" {
-    command = "terraform import azure_container_app.test_app || terraform apply -target=azure_container_app.test_app"
-  }
 
 # Define variables for GitHub secrets
 variable "azure_subscription_id" {}
@@ -72,10 +44,7 @@ variable "dockerhub_token" {}
 resource "azurerm_resource_group" "rg" {
   name     = "test-apps-dev"
   location = "australiaeast"
-  # This lifecycle rule will destroy and recreate the resource if certain attributes change
-  lifecycle {
-    create_before_destroy = true
-  }
+  
 }
 
 # Create a Container Apps Environment
@@ -83,10 +52,7 @@ resource "azurerm_container_app_environment" "env" {
   name                       = "test-apps-dev"
   location                   = azurerm_resource_group.rg.location
   resource_group_name        = azurerm_resource_group.rg.name
-  # This lifecycle rule will destroy and recreate the resource if certain attributes change
-  lifecycle {
-    create_before_destroy = true
-  }
+  
 }
 
 # Create a Container Registry
@@ -96,10 +62,7 @@ resource "azurerm_container_registry" "acr" {
   location            = azurerm_resource_group.rg.location
   sku                 = "Basic"
   admin_enabled       = true
-  # This lifecycle rule will destroy and recreate the resource if certain attributes change
-  lifecycle {
-    create_before_destroy = true
-  }
+  
 }
 
 # Create a Container App
@@ -108,10 +71,7 @@ resource "azurerm_container_app" "app" {
   container_app_environment_id = azurerm_container_app_environment.env.id
   resource_group_name          = azurerm_resource_group.rg.name
   revision_mode                = "Single"
-  # This lifecycle rule will destroy and recreate the resource if certain attributes change
-  lifecycle {
-    create_before_destroy = true
-  }
+  
 
   template {
     container {
