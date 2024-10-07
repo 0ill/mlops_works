@@ -2,4 +2,5 @@
 *.pyc
 __pycache__
 .DS_Store
-build-deploy_git.yml
+.github/workflows/build-deploy_git.yml
+.github/workflows/build-deploy_git_azure.yml
