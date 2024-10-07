@@ -37,7 +37,7 @@ jobs:
         with: 
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/test-app:${{ github.sha }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/test-app:latest
   
   deploy-azure_terraform:
     needs: build-and-push
@@ -56,6 +56,8 @@ jobs:
           ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      - name: import old state
+        run: terraform import azurerm_resource_group.test-apps-dev /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/test-apps-dev
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -input=false -no-color
@@ -80,5 +82,5 @@ jobs:
           az containerapp update \
             --name test-ap-dev \
             --resource-group test-apps-dev \
-            --image ${{ secrets.DOCKERHUB_USERNAME }}/test-app:${{ github.sha }} \
+            --image ${{ secrets.DOCKERHUB_USERNAME }}/test-app:latest \
             --query properties.configuration.ingress.fqdn
