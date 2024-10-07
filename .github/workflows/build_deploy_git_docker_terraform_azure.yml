@@ -71,15 +71,15 @@ jobs:
           TF_VAR_azure_tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           TF_VAR_dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           TF_VAR_dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
-          TF_VAR_resource_group_name: test-apps_dev
-          TF_VAR_location: West US
+          TF_VAR_resource_group_name: test-apps-dev
+          TF_VAR_location: Australia East
           
 
       - name: Update Container App
         run: |
           az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
           az containerapp update \
-            --name test-app \
-            --resource-group test-apps \
+            --name test-ap-dev \
+            --resource-group test-apps-dev \
             --image ${{ secrets.DOCKERHUB_USERNAME }}/test-app:${{ github.sha }} \
             --query properties.configuration.ingress.fqdn

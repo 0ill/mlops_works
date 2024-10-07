@@ -31,6 +31,35 @@ provider "azurerm" {
 }
 
 
+# Import existing resources or create new ones if they don't exist
+resource "azurerm_resource_group" "r" {
+  name     = "test-apps-dev"
+  location = "centralus"
+  import {
+    id = "/subscriptions/<subscription_id>/resourceGroups/test-apps-dev"
+  }
+  provisioner "local-exec" {
+    command = "terraform import azurerm_resource_group.r || terraform apply -target=azurerm_resource_group.r"
+  }
+}
+
+resource "azure_container_app" "test_app" {
+  name                = "test-app"
+  resource_group_name = azurerm_resource_group.r.name
+  location            = "centralus"
+  environment         = "test-apps"
+  image               = "${var.dockerhub_username}/azure:latest"
+  target_port         = 80
+  ingress {
+    external = true
+  }
+  import {
+    id = "/subscriptions/<subscription_id>/resourceGroups/test-apps-dev/providers/Microsoft.ContainerApp/containerApps/test-app"
+  }
+  provisioner "local-exec" {
+    command = "terraform import azure_container_app.test_app || terraform apply -target=azure_container_app.test_app"
+  }
+
 # Define variables for GitHub secrets
 variable "azure_subscription_id" {}
 variable "azure_client_id" {}
