@@ -85,17 +85,18 @@ jobs:
             echo "Still deleting..."
             sleep 10
           done
-          - name: Check for existing Container App Environment
-          id: check_container_app_env
-          run: |
-            if az containerapp env show --name test-apps-dev --resource-group test-apps-dev; then
-              echo "Container App Environment exists."
-              echo "::set-output name=env_exists::true"
-            else
-              echo "Container App Environment does not exist."
-              echo "::set-output name=env_exists::false"
-            fi
-  
+          
+      - name: Check for existing Container App Environment
+        id: check_container_app_env
+        run: |
+          if az containerapp env show --name test-apps-dev --resource-group test-apps-dev; then
+            echo "Container App Environment exists."
+            echo "::set-output name=env_exists::true"
+          else
+            echo "Container App Environment does not exist."
+            echo "::set-output name=env_exists::false"
+          fi
+
       - name: Delete existing Container App Environment
         if: steps.check_container_app_env.outputs.env_exists == 'true'
         run: |
