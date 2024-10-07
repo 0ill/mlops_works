@@ -112,6 +112,33 @@ jobs:
             sleep 10
           done
 
+      - name: Check for existing Container Registry
+        id: check_container_registry
+        run: |
+          if az acr show --name testdevappsacr; then
+            echo "Container Registry exists."
+            echo "::set-output name=acr_exists::true"
+          else
+            echo "Container Registry does not exist."
+            echo "::set-output name=acr_exists::false"
+          fi
+
+      - name: Delete existing Container Registry
+        if: steps.check_container_registry.outputs.acr_exists == 'true'
+        run: |
+          echo "Deleting existing Container Registry..."
+          az acr delete --name testdevappsacr --resource-group test-apps-dev --yes
+
+      - name: Wait for Container Registry to be deleted
+        if: steps.check_container_registry.outputs.acr_exists == 'true'
+        run: |
+          echo "Waiting for Container Registry to be deleted..."
+          while az acr show --name testdevappsacr; do
+            echo "Still deleting..."
+            sleep 10
+          done
+
+
       - name: Terraform Apply
         run: terraform apply -auto-approve 
         env:
