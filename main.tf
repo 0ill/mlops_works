@@ -6,19 +6,9 @@ terraform {
       version = "~> 3.0"
     }
   }
-}
 
-# Terraform configuration (typically in a separate file, e.g., terraform.tf)
-terraform {
   backend "local" {
     path = "terraform.tfstate"
-  }
-}
-
-# Delete existing resources if they exist
-resource "null_resource" "delete_resources" {
-  provisioner "local-exec" {
-    command = "terraform state rm azurerm_resource_group.r"
   }
 }
 
@@ -29,8 +19,6 @@ provider "azurerm" {
   client_secret   = var.azure_client_secret
   tenant_id       = var.azure_tenant_id
 }
-
-
 
 # Define variables for GitHub secrets
 variable "azure_subscription_id" {}
@@ -44,15 +32,22 @@ variable "dockerhub_token" {}
 resource "azurerm_resource_group" "test-apps-dev" {
   name     = "test-apps-dev"
   location = "australiaeast"
-  
 }
+
+# Important Note: 
+# If the resource group "test-apps-dev" already exists in Azure and is not managed by Terraform, 
+# you need to import it into the Terraform state before applying the configuration.
+#
+# To import the existing resource group, run:
+# terraform import azurerm_resource_group.test-apps-dev /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/test-apps-dev
+#
+# Replace YOUR_SUBSCRIPTION_ID with your actual Azure subscription ID.
 
 # Create a Container Apps Environment
 resource "azurerm_container_app_environment" "test-apps-dev" {
-  name                       = "test-apps-dev"
-  location                   = azurerm_resource_group.test-apps-dev.location
-  resource_group_name        = azurerm_resource_group.test-apps-dev.name
-  
+  name                = "test-apps-dev"
+  location            = azurerm_resource_group.test-apps-dev.location
+  resource_group_name = azurerm_resource_group.test-apps-dev.name
 }
 
 # Create a Container Registry
@@ -62,7 +57,6 @@ resource "azurerm_container_registry" "test-apps-dev" {
   location            = azurerm_resource_group.test-apps-dev.location
   sku                 = "Basic"
   admin_enabled       = true
-  
 }
 
 # Create a Container App
@@ -71,7 +65,6 @@ resource "azurerm_container_app" "test-apps-dev" {
   container_app_environment_id = azurerm_container_app_environment.test-apps-dev.id
   resource_group_name          = azurerm_resource_group.test-apps-dev.name
   revision_mode                = "Single"
-  
 
   template {
     container {
@@ -80,7 +73,6 @@ resource "azurerm_container_app" "test-apps-dev" {
       cpu    = 0.25
       memory = "0.5Gi"
     }
-  
   }
 
   ingress {
