@@ -26,13 +26,13 @@ variable "dockerhub_token" {}
 
 # Create a resource group
 resource "azurerm_resource_group" "rg" {
-  name     = "test-apps_dev"
+  name     = "test-apps-dev"
   location = "centralus"
 }
 
 # Create a Container Apps Environment
 resource "azurerm_container_app_environment" "env" {
-  name                       = "test-apps_dev"
+  name                       = "test-apps-dev"
   location                   = azurerm_resource_group.rg.location
   resource_group_name        = azurerm_resource_group.rg.name
 }
@@ -48,14 +48,14 @@ resource "azurerm_container_registry" "acr" {
 
 # Create a Container App
 resource "azurerm_container_app" "app" {
-  name                         = "test-apps_dev"
+  name                         = "test-apps-dev"
   container_app_environment_id = azurerm_container_app_environment.env.id
   resource_group_name          = azurerm_resource_group.rg.name
   revision_mode                = "Single"
 
   template {
     container {
-      name   = "test-apps_dev"
+      name   = "test-apps-dev"
       image  = "${azurerm_container_registry.acr.login_server}/test-app:latest"
       cpu    = 0.25
       memory = "0.5Gi"
