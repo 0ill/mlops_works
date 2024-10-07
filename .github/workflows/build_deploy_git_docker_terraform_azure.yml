@@ -56,7 +56,10 @@ jobs:
           ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-         
+      
+      - name: login  
+        run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
+          
       - name: Check for existing Resource Group
         id: check_resource_group
         run: |
@@ -82,7 +85,7 @@ jobs:
             echo "Still deleting..."
             sleep 10
           done
-          
+
       - name: Terraform Apply
         run: terraform apply -auto-approve 
         env:
