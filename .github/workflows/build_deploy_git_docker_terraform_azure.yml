@@ -72,7 +72,7 @@ jobs:
           TF_VAR_dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           TF_VAR_dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
           TF_VAR_resource_group_name: test-apps-dev
-          TF_VAR_location: Australia East
+          TF_VAR_location: australiaeast
           
 
       - name: Update Container App
