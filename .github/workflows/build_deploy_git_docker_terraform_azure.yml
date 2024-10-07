@@ -39,7 +39,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/test-app:${{ github.sha }}
   
-  deploy-azure:
+  deploy-azure_terraform:
     needs: build-and-push
     runs-on: ubuntu-latest
     steps:
@@ -70,6 +70,8 @@ jobs:
           TF_VAR_azure_tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           TF_VAR_dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
           TF_VAR_dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
+          TF_VAR_resource_group_name: "test-apps"
+          TF_VAR_location: "West US"
 
       - name: Update Container App
         run: |
