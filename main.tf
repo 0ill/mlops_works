@@ -27,7 +27,7 @@ variable "dockerhub_token" {}
 # Create a resource group
 resource "azurerm_resource_group" "rg" {
   name     = "test-apps-dev"
-  location = "centralus"
+  location = "australiaeast"
 }
 
 # Create a Container Apps Environment
