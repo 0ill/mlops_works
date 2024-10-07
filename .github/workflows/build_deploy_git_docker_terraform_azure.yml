@@ -75,7 +75,7 @@ jobs:
           TF_VAR_location: australiaeast
           
 
-      - name: Update Container App
+      - name: Update Container Apps
         run: |
           az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
           az containerapp update \
