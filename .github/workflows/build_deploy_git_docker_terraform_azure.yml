@@ -60,7 +60,7 @@ jobs:
         run: terraform import azurerm_resource_group.test-apps-dev /subscriptions/${{ secrets.AZURE_SUBSCRIPTION_ID }}/resourceGroups/test-apps-dev
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -input=false -no-color
+        run: terraform apply -auto-approve 
         env:
           ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
