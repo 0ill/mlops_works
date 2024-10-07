@@ -15,6 +15,13 @@ terraform {
   }
 }
 
+# Delete existing resources if they exist
+resource "null_resource" "delete_resources" {
+  provisioner "local-exec" {
+    command = "terraform state rm azurerm_resource_group.r"
+  }
+}
+
 provider "azurerm" {
   features {}
   subscription_id = var.azure_subscription_id
