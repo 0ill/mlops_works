@@ -160,7 +160,7 @@ jobs:
         run: |
           az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
           az containerapp update \
-            --name test-ap-dev \
+            --name test-app-dev \
             --resource-group test-apps-dev \
             --image ${{ secrets.DOCKERHUB_USERNAME }}/test-app:latest \
             --query properties.configuration.ingress.fqdn
