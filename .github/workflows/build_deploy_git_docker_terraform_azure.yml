@@ -89,7 +89,7 @@ jobs:
       - name: Check for existing Container App Environment
         id: check_container_app_env
         run: |
-          if az containerapp env show --name test-apps-dev --resource-group test-apps-dev; then
+          if az containerapp env show --name test-apps-dev ; then
             echo "Container App Environment exists."
             echo "::set-output name=env_exists::true"
           else
@@ -101,13 +101,13 @@ jobs:
         if: steps.check_container_app_env.outputs.env_exists == 'true'
         run: |
           echo "Deleting existing Container App Environment..."
-          az containerapp env delete --name test-apps-dev --resource-group test-apps-dev --yes
+          az containerapp env delete --name test-apps-dev  --yes
 
       - name: Wait for Container App Environment to be deleted
         if: steps.check_container_app_env.outputs.env_exists == 'true'
         run: |
           echo "Waiting for Container App Environment to be deleted..."
-          while az containerapp env show --name test-apps-dev --resource-group test-apps-dev; do
+          while az containerapp env show --name test-apps-dev ; do
             echo "Still deleting..."
             sleep 10
           done
@@ -127,7 +127,7 @@ jobs:
         if: steps.check_container_registry.outputs.acr_exists == 'true'
         run: |
           echo "Deleting existing Container Registry..."
-          az acr delete --name testdevappsacr --resource-group test-apps-dev --yes
+          az acr delete --name testdevappsacr  --yes
 
       - name: Wait for Container Registry to be deleted
         if: steps.check_container_registry.outputs.acr_exists == 'true'
