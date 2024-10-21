@@ -37,7 +37,7 @@ jobs:
         with: 
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/test-app:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/test-apps:latest
   
   deploy-azure_terraform:
     needs: build-and-push
@@ -57,9 +57,11 @@ jobs:
           ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
       
-      - name: login  
-        run: az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
-          
+      - name: 'Azure CLI Login'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }} 
+
       - name: Check for existing Resource Group
         id: check_resource_group
         run: |
@@ -89,7 +91,7 @@ jobs:
       - name: Check for existing Container App Environment
         id: check_container_app_env
         run: |
-          if az containerapp env show --name test-apps-dev ; then
+          if az containerapp env show --name test-apps-dev --resource-group test-apps-dev; then
             echo "Container App Environment exists."
             echo "::set-output name=env_exists::true"
           else
@@ -101,13 +103,13 @@ jobs:
         if: steps.check_container_app_env.outputs.env_exists == 'true'
         run: |
           echo "Deleting existing Container App Environment..."
-          az containerapp env delete --name test-apps-dev  --yes
+          az containerapp env delete --name test-apps-dev --resource-group test-apps-dev --yes
 
       - name: Wait for Container App Environment to be deleted
         if: steps.check_container_app_env.outputs.env_exists == 'true'
         run: |
           echo "Waiting for Container App Environment to be deleted..."
-          while az containerapp env show --name test-apps-dev ; do
+          while az containerapp env show --name test-apps-dev --resource-group test-apps-dev; do
             echo "Still deleting..."
             sleep 10
           done
@@ -127,7 +129,7 @@ jobs:
         if: steps.check_container_registry.outputs.acr_exists == 'true'
         run: |
           echo "Deleting existing Container Registry..."
-          az acr delete --name testdevappsacr  --yes
+          az acr delete --name testdevappsacr --resource-group test-apps-dev --yes
 
       - name: Wait for Container Registry to be deleted
         if: steps.check_container_registry.outputs.acr_exists == 'true'
@@ -160,7 +162,7 @@ jobs:
         run: |
           az login --service-principal -u ${{ secrets.AZURE_CLIENT_ID }} -p ${{ secrets.AZURE_CLIENT_SECRET }} --tenant ${{ secrets.AZURE_TENANT_ID }}
           az containerapp update \
-            --name test-app-dev \
+            --name test-apps-dev \
             --resource-group test-apps-dev \
             --image ${{ secrets.DOCKERHUB_USERNAME }}/test-app:latest \
             --query properties.configuration.ingress.fqdn

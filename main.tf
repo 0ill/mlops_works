@@ -69,7 +69,7 @@ resource "azurerm_container_app" "test-apps-dev" {
   template {
     container {
       name   = "test-apps-dev"
-      image  = "${azurerm_container_registry.test-apps-dev.login_server}/test-app:latest"
+      image  = "${azurerm_container_registry.test-apps-dev.login_server}/test-apps:latest"
       cpu    = 0.25
       memory = "0.5Gi"
     }
